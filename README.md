@@ -1,35 +1,38 @@
-# azure-log-analytics-json-redis
-Collecting metrics from redis and sending to Azure Log Analytics thru oms agent fluentd custom JSON data sources
+# Collecting custom metrics from redis and sending to Azure Log Analytics
 
-How to send custom metrics from your redis on-prem to Azure Log Analytics.
-
-NOTE: Considering that you already have Azure Log Analytics workspace setup and OMS agent installed and running on your vm.
+*NOTE*: Considering that you already have Azure Log Analytics workspace setup and OMS agent running on your server, if not:
 - Azure Monitor: https://azure.microsoft.com/en-us/services/monitor/
 - OMS Agent for Linux: https://github.com/microsoft/OMS-Agent-for-Linux  
 
 
-I decided to use JSON data as it is already supported by OMS Agent, all you have to do is to configure FluentD plugin as described here:
+I decided to use JSON data as it is already supported by OMS Agent, so all you have to do is to configure OMS Fluentd plugin as described here:
 - Collecting custom JSON data sources with the Log Analytics agent for Linux in Azure Monitor: https://docs.microsoft.com/en-us/azure/azure-monitor/platform/data-sources-json
 
 
-The only difference is that your command will be:
+The only difference is that your command becomes:
 
 
 ```
 command '/usr/local/bin/redis_info.py'
 ```
 
-Please refer to https://github.com/flaviotorres/azure-log-analytics-json-redis/blob/master/redis_info.py file and make sure linux owner and group is set to omsagent:omiusers
+Please refer to https://github.com/flaviotorres/azure-log-analytics-json-redis/blob/master/redis_info.py file and make sure Linux owner and group is set to omsagent:omiusers
 
-Once you have the script setup, run and you will see get something like:
+Once you have the script in place and running you should see get something like:
 
 ```
 {"used_memory": 53858016, "used_memory_rss": 67555328, "keyspace_hits": 3971437, "keyspace_misses": 85502, "expired_keys": 38126, "evicted_keys": 0, "keys": 734}
 ```
 
-NOTE: remind to check the log file (/var/opt/microsoft/omsagent/WORKSPACE_ID/log/omsagent.log) after restarting the agent. 
+*NOTE*: remind to check the log file (/var/opt/microsoft/omsagent/WORKSPACE_ID/log/omsagent.log) after restarting the agent. 
 
-Alright, now you should see in Log Analytics Custom Logs a table called redismemory_CL. Here are the queries for basic monitoring.
+Alright, now you should see in Log Analytics Custom Logs a table named redismemory_CL. 
+
+
+![Log Analytics Query Workspace](https://github.com/flaviotorres/azure-log-analytics-json-redis/blob/master/Azure_Log_analytics_log_workspace.png?raw=true)
+
+
+Now, here are a few queries for basic monitoring.
 
 
 ```
