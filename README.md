@@ -19,7 +19,7 @@ The only difference is that your command will be:
 command '/usr/local/bin/redis_info.py'
 ```
 
-Please refer to redis_info.py file and make sure linux owner and group is set to omsagent:omiusers
+Please refer to https://github.com/flaviotorres/azure-log-analytics-json-redis/blob/master/redis_info.py file and make sure linux owner and group is set to omsagent:omiusers
 
 Once you have the script setup, run and you will see get something like:
 
@@ -66,4 +66,6 @@ for i in $(seq 10000);do  redis-cli -c -h IP -p PORT  -a PWD get mykey11111$i;do
 ```
 
 Result:
+Azure_Log_Analytics_onprem_Redis_Dashboard.png
+![Log Analytics Dashboard](https://github.com/flaviotorres/azure-log-analytics-json-redis/blob/master/Azure_Log_Analytics_onprem_Redis_Dashboard.png?raw=true)
 
