@@ -1,6 +1,6 @@
 # Collecting custom metrics from redis and sending to Azure Log Analytics
 
-*NOTE*: Considering that you already have Azure Log Analytics workspace setup and OMS agent running on your server, if not:
+*NOTE*: Considering that you already have Azure Log Analytics workspace setup and OMS agent running on your server, if you don't:
 - Azure Monitor: https://azure.microsoft.com/en-us/services/monitor/
 - OMS Agent for Linux: https://github.com/microsoft/OMS-Agent-for-Linux  
 
