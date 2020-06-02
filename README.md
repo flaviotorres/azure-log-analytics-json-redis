@@ -15,6 +15,7 @@ The only difference is that your command becomes:
 ```
 command '/usr/local/bin/redis_info.py'
 ```
+NOTE: tag oms.api.redismemory
 
 Please refer to https://github.com/flaviotorres/azure-log-analytics-json-redis/blob/master/redis_info.py file and make sure Linux owner and group is set to omsagent:omiusers
 
